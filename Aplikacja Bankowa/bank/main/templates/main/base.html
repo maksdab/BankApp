@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Banking App</title>
+  {% load static %}
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Wklej to w nagłówek swojego pliku HTML -->
+
+  <link rel="stylesheet" href="{% static 'style.css' %}"> <!-- Poprawiłem to, aby odwoływać się do pliku stylów -->
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid justify-content-between">
+      <a class="navbar-brand" href="{% url 'home' %}">Banking App</a>
+      <div class="navbar-nav">
+        {% if request.user.is_authenticated %}
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item" style="margin-right: 40px;">
+            <a class="nav-link" href="{% url 'transactions' %}">Transactions</a> <!-- Dodajemy link do strony transakcji -->
+          </li>
+          <li class="nav-item" style="margin-right: 40px;">
+            <a class="nav-link" href="{% url 'withdraw' %}">Withdraw</a> <!-- Dodajemy link do strony wypłaty -->
+          </li>
+          <li class="nav-item" style="margin-right: 40px;">
+            <a class="nav-link" href="{% url 'deposit' %}">Deposit</a> <!-- Dodajemy link do strony wpłaty -->
+          </li>
+          <li class="nav-item" style="margin-right: 40px;">
+            <a class="nav-link" href="{% url 'transfer' %}">Transfer</a> <!-- Dodajemy link do strony wpłaty -->
+          </li>
+          <li class="nav-item dropdown" style="margin-right: 30px;">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-person-circle"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <li><span class="dropdown-item-text">{{ request.user.username }}</span></li>
+              {% if request.user.customer.accountdata_set.all %}
+                  {% with account_data=request.user.customer.accountdata_set.first %}
+                      <li><span class="dropdown-item-text">Balance: ${{ account_data.balance }}</span></li>
+                  {% endwith %}
+              {% endif %}
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
+           </ul>
+          
+          </li>
+        
+        </ul>
+        {% else %}
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item" style="margin-right: 40px;">
+            <a class="nav-link" href="{% url 'home' %}">Home</a>
+          </li>
+          <li class="nav-item" style="margin-right: 40px;">
+            <a class="nav-link" href="{% url 'login' %}">Login</a> <!-- Dodajemy link do logowania -->
+          </li>
+          <li class="nav-item" style="margin-right: 40px;">
+            <a class="nav-link" href="{% url 'register' %}">Sign Up</a> <!-- Dodajemy link do rejestracji -->
+          </li>
+        </ul>
+        {% endif %}
+        
+      </div>
+    </div>
+  </nav>
+
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-md-1">
+        <!-- Sidebar -->
+      </div>
+      <div class="col-md-10"id="zawartosc">
+        <!-- Main Content -->
+        <main>
+        {% block content %}
+
+
+        {% endblock %}
+        </main>
+      </div>
+      <div class="col-md-1">
+        <!-- Sidebar -->
+      </div>
+    </div>
+  </div>
+  
+  
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <h5>Informacje o firmie</h5>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.</p>
+        </div>
+        <div class="col-md-4">
+          <h5>Numer telefonu</h5>
+          <p>Telefon: 123-456-789</p>
+        </div>
+        <div class="col-md-4">
+          <h5>Adres</h5>
+          <p>ul. Testowa 1<br>00-000 Warszawa</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+  
+  
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+
+  
+  
+    
+</body>
+</html>

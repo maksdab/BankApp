@@ -1,0 +1,43 @@
+{% extends "main/base.html" %}
+
+{% block content %}
+<div class="bank-promotion">
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-md-8 offset-md-2 text-center">
+        
+        {% if request.user.is_authenticated %}
+        
+          {% if request.user.customer.accountdata_set.all %}
+            {% with account_data=request.user.customer.accountdata_set.first %}
+            <div class="account-info card shadow p-4 mb-5 bg-white rounded">
+              <h2 class="mb-4">Twoje konto bankowe</h2>
+                <div class="info">
+                <p>Saldo: <span class="balance">${{ account_data.balance }}</span></p>
+                <p>Ilość transakcji: <span class="transactions">{{ account_data.transactions.count }}</span></p>
+              </div>
+            </div>
+            {% endwith %}
+          {% endif %}
+          
+        {% else %}
+        
+        <h1 class="display-4">Dołącz do naszego banku już dziś!</h1>
+        <p class="lead">Oferujemy nie tylko bezpieczne i wygodne rozwiązania bankowe, ale także indywidualne podejście do każdego klienta.</p>
+        <div class="features mt-4">
+          <p>Zapewniamy atrakcyjne oprocentowanie na lokaty oraz szeroki zakres usług online, dzięki którym możesz zarządzać swoimi finansami z dowolnego miejsca na świecie.</p>
+          <p>Nasi doświadczeni doradcy finansowi są gotowi odpowiedzieć na Twoje pytania i pomóc w wyborze najlepszych produktów bankowych dostosowanych do Twoich potrzeb.</p>
+          <p>W naszym banku stawiamy na innowacje i rozwój. Dążymy do ciągłego udoskonalania naszych usług, aby zapewnić Ci najlepsze doświadczenia bankowe.</p>
+          <p>Bezpieczeństwo Twoich środków jest dla nas priorytetem. Wykorzystujemy najnowocześniejsze technologie i procedury zabezpieczające, aby chronić Twoje pieniądze.</p>
+          <p>Dołączając do naszego banku, zyskujesz dostęp do ekskluzywnych ofert, promocji i programów lojalnościowych. Dbamy o naszych klientów i doceniamy ich zaufanie.</p>
+          <p>Nie zwlekaj dłużej! Dołącz do naszej społeczności i korzystaj z profesjonalnych usług bankowych, które spełnią Twoje oczekiwania.</p>
+        </div>
+        <a href="{% url 'register' %}" class="btn btn-primary btn-lg mt-3">Dołącz już teraz!</a>
+        
+        {% endif %}
+
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

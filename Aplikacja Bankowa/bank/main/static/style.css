@@ -1,0 +1,158 @@
+body {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Minimalna wysokość strony */
+}
+
+.container {
+  flex: 1; /* Elastyczne dostosowanie kontenera do wysokości strony */
+}
+
+
+.login_view {
+  text-align: center;
+
+}
+/* Styl dla odstępu między polami formularza */
+.login_view .form-group {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+/* Styl dla szerokości pól formularza */
+.login_view .col-sm-12 {
+  width: 80%; /* Możesz dostosować szerokość według potrzeb */
+}
+
+/* Styl dla przycisku */
+.login_view button[type="submit"] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+/* Styl dla przycisku po najechaniu myszką */
+.login_view button[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+
+
+
+
+/* popup container */
+#popup {
+  display: none; /* ukryj domyślnie */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 9999; /* wysoka wartość indeksu */
+}
+
+/* style dla komunikatów */
+.message {
+  margin-bottom: 10px;
+}
+
+
+
+
+
+.bank-promotion {
+  background-color: #f8f9fa;
+  padding: 20px 0;
+}
+
+.bank-promotion .container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.bank-promotion .text-center {
+  text-align: center;
+}
+
+.bank-promotion .btn-primary {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.bank-promotion .btn-primary:hover {
+  background-color: #0056b3;
+}
+
+
+
+
+
+
+
+
+
+
+
+footer {
+  margin-top: 30px;
+  background-color: #343a40;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  position: relative; /* Ustawienie pozycji na relative */
+  z-index: 1; /* Ustawienie indeksu warstwy, aby stopka była na wierzchu */
+}
+
+
+
+
+
+
+@media (max-width: 768px) {
+  footer {
+      padding: 10px; /* Mniejszy odstęp dla mniejszych ekranów */
+  }
+}
+
+
+.account-info {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.account-info h2 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.account-info .info {
+  margin-top: 15px;
+}
+
+.account-info .info p {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.account-info .info p span {
+  font-weight: bold;
+  color: #007bff;
+}
+
+

@@ -1,0 +1,18 @@
+{% extends "main/base.html" %}
+{% block content %}
+<div class="container">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <h2>Wpłać środki</h2>
+        <form method="post">
+          {% csrf_token %}
+          <div class="mb-3">
+            <label for="amount" class="form-label">Kwota</label>
+            <input type="text" class="form-control" id="amount" name="amount">
+          </div>
+          <button type="submit" class="btn btn-primary">Wpłać</button>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}
